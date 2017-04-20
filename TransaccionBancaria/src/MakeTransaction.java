@@ -11,12 +11,16 @@ public class MakeTransaction extends JPanel implements ActionListener{
 	private JLabel tipLb;
 	private JButton btnSend, btnGoBack;
 	private JTextField toWhoTxt, quantityTxt;
-	private UsuarioLayout userP;
+	private UsuarioLayout userPanel;
 	
 	
 	public MakeTransaction(UsuarioLayout usuario){
-		this.userP = usuario;
+		//SET THE USER PANEL AS THE PREVIOUS VIEW
+		this.userPanel = usuario;
+		
+		//SET THE LAYOUT FOR THE PANEL
 		this.setLayout(new GridLayout(0, 1));
+		
 		this.tipLb = new JLabel("Insert the Destination Account");
 		this.btnGoBack = new JButton("Back");
 		this.btnSend = new JButton("Send");
@@ -30,20 +34,24 @@ public class MakeTransaction extends JPanel implements ActionListener{
 		this.add(this.btnGoBack);
 		
 		this.btnGoBack.addActionListener(this);
+		this.btnSend.addActionListener(this);
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//BUTTON LOGIC HERE!
 		//Check Directly the object from which the action was made
 		if(e.getSource().equals(this.btnGoBack)){
-			//this.setVisible(false);
 			//Remove the JPanel from the JFrame
-			//Instead of Only making it invisible 
+			//Instead of Only making it invisible with setVisible(false); 
 			//cleans from RAM
 			this.removeAll();
 			
-			this.userP.setVisible(true);
+			this.userPanel.setVisible(true);
+		}
+		else{
+			System.out.println("Transaction Complete");
 		}
 		
 	}

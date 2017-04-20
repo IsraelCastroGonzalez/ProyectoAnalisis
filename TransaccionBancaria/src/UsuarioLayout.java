@@ -11,10 +11,16 @@ import javax.swing.JPanel;
 
 public class UsuarioLayout extends JPanel implements ActionListener{
 	
+	////USER OPTIONS PANELS///////////////////
 	private MakeTransaction transactionPanel;
+	private AddBeneficiary beneficiaryPanel;
+	private ChangeMail mailPanel;
+	private SeeTransactions transactionsPanel;
+	private AddService servicePanel;
+	/////////////////////////////////////////
+
 	private MainWindow ventana;
 	
-
 	private JLabel userNameLb,
 				   accountNoLb,
 				   addressLb,
@@ -70,9 +76,6 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 		this.btnChangeMail.addActionListener(this);
 		this.btnSeeTransactions.addActionListener(this);
 		this.btnSendTransaccions.addActionListener(this);
-		
-		this.repaint();
-		
 	}
 
 	@Override
@@ -81,32 +84,66 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 			//System.out.println("IT WORKS!!!");
 			this.setVisible(false);
 			this.transactionPanel = new MakeTransaction(this);
-			this.ventana.add(transactionPanel);
+			this.ventana.add(this.transactionPanel);
 			this.transactionPanel.setVisible(true);
 		}
 		else if(e.getSource().equals(this.btnAddBeneficiary)){
-			System.out.println("Hello from ADD BENEFICIARY");
+			
+			this.setVisible(false);
+			this.beneficiaryPanel = new AddBeneficiary(this);
+			this.ventana.add(this.beneficiaryPanel);
+			this.beneficiaryPanel.setVisible(true);
 		}
 		else if(e.getSource().equals(this.btnAddService)){
-			System.out.println("Hello from ADD SERVICE");
+			
+			this.setVisible(false);
+			this.servicePanel = new AddService(this);
+			this.ventana.add(this.servicePanel);
+			this.servicePanel.setVisible(true);
 		}
 		else if(e.getSource().equals(this.btnChangeMail)){
-			System.out.println("Hello from CHANGE MAIL");
+			
+			this.setVisible(false);
+			this.mailPanel = new ChangeMail(this);
+			this.ventana.add(this.mailPanel);
+			this.mailPanel.setVisible(true);
 		}
 		else if(e.getSource().equals(this.btnSeeTransactions)){
-			System.out.println("Hello from SEE TRANSACTIONS");
+			
+			this.setVisible(false);
+			this.transactionsPanel = new SeeTransactions(this);
+			this.ventana.add(this.transactionsPanel);
+			this.transactionsPanel.setVisible(true);
 		}
 		else{
-			System.out.println("Hello from SEND TRANSACTIONS");
+			System.out.println("Transactions Sent!");
 		}
 		
 	}
-	/*
-	this.contentPanel = new JPanel();
+
+	public JLabel getBeneficiariesLb() {
+		return beneficiariesLb;
+	}
+
+	public void setBeneficiariesLb(String beneficiariesLb) {
+		this.beneficiariesLb.setText(beneficiariesLb);
+	}
+
+	public JLabel getBalanceLb() {
+		return balanceLb;
+	}
+
+	public void setBalanceLb(String balanceLb) {
+		this.balanceLb.setText(balanceLb);
+	}
+
+	public JLabel getMailLb() {
+		return mailLb;
+	}
+
+	public void setMailLb(String mailLb) {
+		this.mailLb.setText(mailLb);
+	}
 	
-	this.transactionPanel = new MakeTransaction(this);
-	this.transactionPanel.setVisible(false);
 	
-	this.add(this.contentPanel);
-	this.contentPanel.add(this.userOverview,BorderLayout.CENTER);*/
 }
