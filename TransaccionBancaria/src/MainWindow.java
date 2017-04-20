@@ -1,8 +1,10 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements ActionListener {
 
 	private LogIn logIn;
 	private UsuarioLayout user;
@@ -11,22 +13,27 @@ public class MainWindow extends JFrame {
 		super("Transaccion Bancaria");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.logIn = new LogIn();
-		this.user = new UsuarioLayout();
+		this.logIn = new LogIn(this);
+		//this.user = new UsuarioLayout(this);
 		
 		this.add(this.logIn,BorderLayout.CENTER);
-		this.add(this.user,BorderLayout.CENTER);
+		//this.add(this.user,BorderLayout.CENTER);
 		
 		
 		this.pack();
 		this.setVisible(true);
-		this.setSize(500,300);
+		this.setSize(300,200);
 		this.setResizable(false);
 		
 	}
 
 	public static void main(String[] args) {
-		new MainWindow();
+	MainWindow ventana = new MainWindow();
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		
 	}
 }

@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,8 @@ import javax.swing.JPanel;
 
 public class UsuarioLayout extends JPanel implements ActionListener{
 	
-	private JPanel contentPanel, userOverview;
+	private MakeTransaction transactionPanel;
+	private MainWindow ventana;
 	
 
 	private JLabel userNameLb,
@@ -23,14 +25,15 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 	private JButton btnAddBeneficiary,
 					btnChangeMail,
 					btnMakeTransaccion,
-					btnSeeTransaccions,
+					btnSeeTransactions,
 					btnAddService,
 					btnSendTransaccions;
 	
-	public void UserOverview(){
+	public UsuarioLayout(MainWindow v){
+		this.ventana = v;
 		
-		this.userOverview = new JPanel();
-		this.userOverview.setLayout(new GridLayout(0,2,10,5));
+		this.setLayout(new GridLayout(0,2,10,5));
+		this.setPreferredSize(new Dimension(300, 500));
 		
 		this.userNameLb = new JLabel("Nombre de Usuario: ***********");
 		this.accountNoLb = new JLabel("Account Number: XXXXXXXXXXXX");
@@ -43,34 +46,67 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 		this.btnAddService = new JButton("Add Service");
 		this.btnChangeMail = new JButton("Change e-mail");
 		this.btnMakeTransaccion = new JButton("Make Transaccion");
-		this.btnSeeTransaccions = new JButton("See Transaccions");
+		this.btnSeeTransactions = new JButton("See Transaccions");
 		this.btnSendTransaccions = new JButton("Send Transaccions");
 		
-		this.userOverview.add(this.userNameLb);
-		this.userOverview.add(this.accountNoLb);
-		this.userOverview.add(this.balanceLb);
-		this.userOverview.add(this.addressLb);
-		this.userOverview.add(this.beneficiariesLb);
-		this.userOverview.add(this.btnAddBeneficiary);
-		this.userOverview.add(this.mailLb);
-		this.userOverview.add(this.btnChangeMail);
-		this.userOverview.add(this.btnAddService);
-		this.userOverview.add(this.btnMakeTransaccion);
-		this.userOverview.add(this.btnSeeTransaccions);
-		this.userOverview.add(this.btnSendTransaccions);
+		this.add(this.userNameLb);
+		this.add(this.accountNoLb);
+		this.add(this.balanceLb);
+		this.add(this.addressLb);
+		this.add(this.beneficiariesLb);
+		this.add(this.btnAddBeneficiary);
+		this.add(this.mailLb);
+		this.add(this.btnChangeMail);
+		this.add(this.btnAddService);
+		this.add(this.btnMakeTransaccion);
+		this.add(this.btnSeeTransactions);
+		this.add(this.btnSendTransaccions);
 		
-		this.userOverview.setSize(400,400);
+		this.setVisible(true);
 		
-	}
-	
-	public UsuarioLayout(){
-		UserOverview();
-		this.add(this.userOverview,BorderLayout.CENTER);
+		this.btnMakeTransaccion.addActionListener(this);
+		this.btnAddBeneficiary.addActionListener(this);
+		this.btnAddService.addActionListener(this);
+		this.btnChangeMail.addActionListener(this);
+		this.btnSeeTransactions.addActionListener(this);
+		this.btnSendTransaccions.addActionListener(this);
+		
+		this.repaint();
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource().equals(this.btnMakeTransaccion)){
+			//System.out.println("IT WORKS!!!");
+			this.setVisible(false);
+			this.transactionPanel = new MakeTransaction(this);
+			this.ventana.add(transactionPanel);
+			this.transactionPanel.setVisible(true);
+		}
+		else if(e.getSource().equals(this.btnAddBeneficiary)){
+			System.out.println("Hello from ADD BENEFICIARY");
+		}
+		else if(e.getSource().equals(this.btnAddService)){
+			System.out.println("Hello from ADD SERVICE");
+		}
+		else if(e.getSource().equals(this.btnChangeMail)){
+			System.out.println("Hello from CHANGE MAIL");
+		}
+		else if(e.getSource().equals(this.btnSeeTransactions)){
+			System.out.println("Hello from SEE TRANSACTIONS");
+		}
+		else{
+			System.out.println("Hello from SEND TRANSACTIONS");
+		}
 		
 	}
+	/*
+	this.contentPanel = new JPanel();
+	
+	this.transactionPanel = new MakeTransaction(this);
+	this.transactionPanel.setVisible(false);
+	
+	this.add(this.contentPanel);
+	this.contentPanel.add(this.userOverview,BorderLayout.CENTER);*/
 }

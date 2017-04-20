@@ -1,8 +1,10 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ForkJoinPool.ManagedBlocker;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -16,7 +18,14 @@ public class LogIn extends JPanel implements ActionListener{
 	private JButton btnLogIn,
 				    btnSignUp;
 	
-	public LogIn(){
+	private MainWindow ventana;
+	private UsuarioLayout userP;
+	
+	public LogIn(MainWindow v){
+		
+		this.ventana = v;
+		
+		this.setLayout(new GridLayout(0, 1));
 		
 		this.btnLogIn = new JButton("Log-In");
 		this.btnSignUp = new JButton("Sign Up");
@@ -31,13 +40,18 @@ public class LogIn extends JPanel implements ActionListener{
 		
 		this.btnLogIn.addActionListener(this);
 		
-		this.setSize(500,270);
+		this.setSize(500,280);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		this.setVisible(false);
+		this.removeAll();
+		this.userP = new UsuarioLayout(this.ventana);
+		this.ventana.add(this.userP);
+		this.ventana.setSize(new Dimension(500, 400));
 		//System.out.println("HELLO FROM BUTTON LOG IN!");		
 	}
 	
