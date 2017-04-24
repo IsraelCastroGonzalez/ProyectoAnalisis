@@ -20,10 +20,11 @@ public class LogIn extends JPanel implements ActionListener{
 	
 	private MainWindow ventana;
 	private UsuarioLayout userP;
+	private SignUp signUpPanel;
 	
-	public LogIn(MainWindow v){
+	public LogIn(MainWindow window){
 		
-		this.ventana = v;
+		this.ventana = window;
 		
 		this.setLayout(new GridLayout(0, 1));
 		
@@ -39,6 +40,7 @@ public class LogIn extends JPanel implements ActionListener{
 		this.add(this.btnSignUp);
 		
 		this.btnLogIn.addActionListener(this);
+		this.btnSignUp.addActionListener(this);
 		
 		this.setSize(500,280);
 		
@@ -47,12 +49,21 @@ public class LogIn extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		this.setVisible(false);
-		this.removeAll();
-		this.userP = new UsuarioLayout(this.ventana);
-		this.ventana.add(this.userP);
-		this.ventana.setSize(new Dimension(500, 400));
-		//System.out.println("HELLO FROM BUTTON LOG IN!");		
+		if(e.getSource().equals(this.btnSignUp)){
+			this.setVisible(false);
+			this.signUpPanel = new SignUp(this.ventana,this);
+			this.ventana.add(this.signUpPanel);
+			this.signUpPanel.setVisible(true);
+			this.ventana.setSize(new Dimension(450, 400));
+			
+		}else{
+			this.setVisible(false);
+			this.removeAll();
+			this.userP = new UsuarioLayout(this.ventana);
+			this.ventana.add(this.userP);
+			this.ventana.setSize(new Dimension(450, 400));
+		}
+			
 	}
 	
 }

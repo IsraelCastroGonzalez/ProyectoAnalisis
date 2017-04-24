@@ -35,8 +35,8 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 					btnAddService,
 					btnSendTransaccions;
 	
-	public UsuarioLayout(MainWindow v){
-		this.ventana = v;
+	public UsuarioLayout(MainWindow window){
+		this.ventana = window;
 		
 		this.setLayout(new GridLayout(0,2,10,5));
 		this.setPreferredSize(new Dimension(300, 500));

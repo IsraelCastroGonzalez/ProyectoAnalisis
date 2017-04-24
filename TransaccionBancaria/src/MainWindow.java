@@ -14,10 +14,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.logIn = new LogIn(this);
-		//this.user = new UsuarioLayout(this);
 		
 		this.add(this.logIn,BorderLayout.CENTER);
-		//this.add(this.user,BorderLayout.CENTER);
 		
 		
 		this.pack();
