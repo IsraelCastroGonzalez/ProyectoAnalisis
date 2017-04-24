@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,17 +10,16 @@ import javax.swing.JTextField;
 
 public class SignUp extends JPanel implements ActionListener{
 	
-	private LogIn logInPanel;
 	private JButton btnSignUp, btnGoBack; 
 	private JLabel nameLb, accountLb, mailLb, addressLb, balanceLb ;
 	private JTextField nameTxt, accountTxt, mailTxt, addressTxt, balanceTxt;
 	
-	private MainWindow ventana;
+	private UsuarioLayout userP;
 	
-	public SignUp(MainWindow window, LogIn logInPanel) {
-		this.ventana = window;
-		this.logInPanel = logInPanel;
-		
+	public SignUp(UsuarioLayout usuario) {
+		this.userP = usuario;
+
+		this.setPreferredSize(new Dimension(450, 500));
 		this.setLayout(new GridLayout(0, 2,10,5));
 		
 		this.btnGoBack = new JButton("Back");
@@ -59,9 +59,8 @@ public class SignUp extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(this.btnGoBack)){
-			this.ventana.setSize(300,200);
 			this.removeAll();
-			this.logInPanel.setVisible(true);
+			this.userP.setVisible(true);
 		}
 	}
 	
