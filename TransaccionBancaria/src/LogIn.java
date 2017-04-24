@@ -40,6 +40,7 @@ public class LogIn extends JPanel implements ActionListener{
 		this.btnLogIn.addActionListener(this);
 		this.btnSignUp.addActionListener(this);
 		
+		
 	}
 
 	@Override
@@ -56,6 +57,7 @@ public class LogIn extends JPanel implements ActionListener{
 			this.setVisible(false);
 			this.userP = new UsuarioLayout(this.ventana,this.usernameTxt.getText(),this);
 			this.ventana.add(this.userP);
+			this.ventana.setResizable(false);
 			//this.ventana.setSize(new Dimension(450, 400));
 //		}
 			

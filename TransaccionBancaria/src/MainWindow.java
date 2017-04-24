@@ -12,16 +12,16 @@ public class MainWindow extends JFrame implements ActionListener {
 	public MainWindow() {
 		super("Transaccion Bancaria");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		
 		this.logIn = new LogIn(this);
 		
 		this.add(this.logIn,BorderLayout.CENTER);
 		
-		
 		this.pack();
-		this.setVisible(true);
 		this.setSize(300,200);
-		this.setResizable(false);
+		this.setVisible(true);
+		
 		
 	}
 

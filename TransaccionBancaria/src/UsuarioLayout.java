@@ -69,9 +69,6 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 		this.btnGoBack = new JButton("Back");
 		
 		
-		
-		this.setVisible(true);
-		
 		this.btnMakeTransaccion.addActionListener(this);
 		this.btnAddBeneficiary.addActionListener(this);
 		this.btnAddUser.addActionListener(this);
@@ -82,6 +79,8 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 		this.btnGoBack.addActionListener(this);
 		
 		CheckUser(user);
+		this.setVisible(true);
+		
 	}
 
 	@Override
@@ -184,7 +183,7 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 			this.ventana.setSize(new Dimension(300, 250));
 			this.add(this.btnAddBeneficiary);
 			this.add(this.btnAddUser);
-			this.add(this.btnGoBack);
+			//this.add(this.btnGoBack);
 		}
 		else{
 			this.setLayout(new GridLayout(0,2,10,5));
@@ -201,6 +200,7 @@ public class UsuarioLayout extends JPanel implements ActionListener{
 			this.add(this.btnMakeTransaccion);
 			this.add(this.btnSeeTransactions);
 			this.add(this.btnSendTransaccions);
+			this.add(this.btnGoBack);
 		}
 	}
 	

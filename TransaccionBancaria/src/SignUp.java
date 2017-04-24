@@ -19,7 +19,7 @@ public class SignUp extends JPanel implements ActionListener{
 	public SignUp(UsuarioLayout usuario) {
 		this.userP = usuario;
 
-		this.setPreferredSize(new Dimension(450, 500));
+		//this.setPreferredSize(new Dimension(450, 500));
 		this.setLayout(new GridLayout(0, 2,10,5));
 		
 		this.btnGoBack = new JButton("Back");
